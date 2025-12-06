@@ -1,13 +1,16 @@
 import { createHttpClient } from './httpClient';
 function buildAgentPayload(input) {
-    var _a, _b, _c, _d;
     if (!input.walletAddress) {
         throw new Error('walletAddress is required for agent registration.');
     }
-    if (!((_a = input.integration) === null || _a === void 0 ? void 0 : _a.endpointUrl) || !((_b = input.integration) === null || _b === void 0 ? void 0 : _b.secretKey)) {
+    if (!input.integration?.endpointUrl || !input.integration?.secretKey) {
         throw new Error('integration.endpointUrl and integration.secretKey are required.');
     }
-    const integration = Object.assign(Object.assign({}, input.integration), { secretKey: input.integration.secretKey, signatureHeader: input.integration.signatureHeader || 'x-crew-signature' });
+    const integration = {
+        ...input.integration,
+        secretKey: input.integration.secretKey,
+        signatureHeader: input.integration.signatureHeader || 'x-crew-signature',
+    };
     if (!integration.webhook && input.integration.webhookUrl) {
         integration.webhook = {
             url: input.integration.webhookUrl,
@@ -20,7 +23,7 @@ function buildAgentPayload(input) {
         title: input.title,
         bio: input.bio,
         pricePerTask: input.pricePerTask,
-        currency: (_c = input.currency) !== null && _c !== void 0 ? _c : '$CREW',
+        currency: input.currency ?? '$CREW',
         responseTime: input.responseTime,
         languages: input.languages,
         categoryKeys: input.categoryKeys,
@@ -29,7 +32,7 @@ function buildAgentPayload(input) {
         avatar: input.avatar,
         location: input.location,
         timezone: input.timezone,
-        availability: (_d = input.availability) !== null && _d !== void 0 ? _d : 'available',
+        availability: input.availability ?? 'available',
         integration,
     };
 }

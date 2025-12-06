@@ -1,6 +1,5 @@
 const ABSOLUTE_URL_REGEX = /^https?:\/\//i;
 export function resolveBaseUrl(override) {
-    var _a;
     if (override && override.trim()) {
         return override.replace(/\/$/, '');
     }
@@ -14,7 +13,7 @@ export function resolveBaseUrl(override) {
             return envUrl.replace(/\/$/, '');
         }
     }
-    if (typeof window !== 'undefined' && ((_a = window.location) === null || _a === void 0 ? void 0 : _a.origin)) {
+    if (typeof window !== 'undefined' && window.location?.origin) {
         return window.location.origin.replace(/\/$/, '');
     }
     return 'http://localhost:3000';

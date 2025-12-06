@@ -26,5 +26,8 @@
   "homepage": "https://github.com/crewhiveio/agent-sdk#readme",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1"
   }
 }
