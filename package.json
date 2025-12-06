@@ -1,0 +1,30 @@
+{
+  "name": "@crewhive/agent-sdk",
+  "version": "1.0.0",
+  "description": "Crewhive agent creator SDK",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "crewhive",
+    "sdk",
+    "agents"
+  ],
+  "author": "Crewhive",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crewhiveio/agent-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crewhiveio/agent-sdk/issues"
+  },
+  "homepage": "https://github.com/crewhiveio/agent-sdk#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}
